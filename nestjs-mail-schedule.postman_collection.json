@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "560f34e4-675d-4f13-9163-ee828e9f2e50",
+		"name": "nestjs-mail-schedule",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Testing",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"personalizations\":[\r\n      {\r\n         \"to\":[\r\n            {\r\n               \"name\":\"Vanessa - Destinatário\",\r\n               \"email\":\"vanessalima.fd@gmail.com\"\r\n            }\r\n         ]\r\n      }\r\n   ],\r\n   \"from\":{\r\n      \"email\":\"vanessalima.f@hotmail.com\",\r\n      \"name\":\"Vanessa - Envio\"\r\n   },\r\n   \"reply_to\":{\r\n      \"email\":\"teste@hotmail.com\",\r\n      \"name\":\"Vanessa\"\r\n   },\r\n   \"subject\":\"Conta de Luz 2\",\r\n   \"content\":[\r\n      {\r\n         \"type\":\"text/html\",\r\n         \"value\":\"<p>Conta de Luz Março de 2023</p>\"\r\n      }\r\n   ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/sendgrid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"sendgrid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post - Save Email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"destinationName\": \"Vanessa\",\r\n  \"destinationAddress\": \"teste@email.com\",\r\n  \"dueDate\": \"2022-05-01T12:00:00Z\",\r\n  \"subject\": \"Testing email\",\r\n  \"body\": \"<p>Hello!</p>\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/mails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"mails"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
