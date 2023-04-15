@@ -1,7 +1,20 @@
+import { IsNotEmpty, IsEmail, IsISO8601 } from 'class-validator';
+
 export class SaveMailDto {
+  @IsNotEmpty()
   destinationName: string;
-  destinationAdress: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  destinationAddress: string;
+
+  @IsNotEmpty()
+  @IsISO8601()
   dueDate: string;
+
+  @IsNotEmpty()
   subject: string;
+
+  @IsNotEmpty()
   body: string;
 }

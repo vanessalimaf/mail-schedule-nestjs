@@ -1,6 +1,6 @@
 export declare class SaveMailDto {
     destinationName: string;
-    destinationAdress: string;
+    destinationAddress: string;
     dueDate: string;
     subject: string;
     body: string;

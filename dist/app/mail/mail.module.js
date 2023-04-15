@@ -11,12 +11,14 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const mail_entity_1 = require("./mail.entity");
 const mail_service_1 = require("./mail.service");
+const mail_controller_1 = require("./mail.controller");
 let MailModule = class MailModule {
 };
 MailModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([mail_entity_1.MailEntity])],
         providers: [mail_service_1.MailService],
+        controllers: [mail_controller_1.MailController],
     })
 ], MailModule);
 exports.MailModule = MailModule;

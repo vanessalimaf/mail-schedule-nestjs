@@ -12,24 +12,28 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MailService = void 0;
+exports.MailController = void 0;
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_2 = require("typeorm");
-const mail_entity_1 = require("./mail.entity");
-let MailService = class MailService {
-    constructor(mailRepository) {
-        this.mailRepository = mailRepository;
+const save_mail_dto_1 = require("./dto/save-mail.dto");
+const mail_service_1 = require("./mail.service");
+let MailController = class MailController {
+    constructor(mailService) {
+        this.mailService = mailService;
     }
-    async save(data) {
-        const dbEntity = this.mailRepository.create(data);
-        return this.mailRepository.save(dbEntity);
+    async save(body) {
+        return this.mailService.save(body);
     }
 };
-MailService = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(mail_entity_1.MailEntity)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
-], MailService);
-exports.MailService = MailService;
-//# sourceMappingURL=mail.service.js.map
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [save_mail_dto_1.SaveMailDto]),
+    __metadata("design:returntype", Promise)
+], MailController.prototype, "save", null);
+MailController = __decorate([
+    (0, common_1.Controller)('api/v1/mails'),
+    __metadata("design:paramtypes", [mail_service_1.MailService])
+], MailController);
+exports.MailController = MailController;
+//# sourceMappingURL=mail.controller.js.map

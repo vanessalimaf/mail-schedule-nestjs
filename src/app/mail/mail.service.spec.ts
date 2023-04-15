@@ -36,18 +36,12 @@ describe('MailService', () => {
     it('should save a new mail with success', async () => {
       const data: SaveMailDto = {
         destinationName: 'User',
-        destinationAdress: 'teste@email.com',
+        destinationAddress: 'teste@email.com',
         dueDate: '2022-05-01T12:00:00Z',
         subject: 'Testing email',
         body: '<p>Hello!</p>',
       };
-      const mailEntityMock = {
-        destinationName: 'User',
-        destinationAdress: 'teste@email.com',
-        dueDate: '2022-05-01T12:00:00Z',
-        subject: 'Testing email',
-        body: '<p>Hello!</p>',
-      } as unknown as MailEntity;
+      const mailEntityMock = { ...data } as unknown as MailEntity;
 
       jest.spyOn(mailRepository, 'create').mockReturnValueOnce(mailEntityMock);
       jest.spyOn(mailRepository, 'save').mockResolvedValueOnce(mailEntityMock);
