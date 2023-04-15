@@ -17,9 +17,7 @@ export class SendgridService {
         Authorization: `Bearer ${this.SENDGRID_API_KEY}`,
       },
     };
-    const response = await lastValueFrom(
-      this.httpService.post(url, data, config),
-    );
+    const response = await lastValueFrom(this.httpService.post(url, data, config));
     console.log(response.data);
     return response.status === HttpStatus.ACCEPTED;
   }
